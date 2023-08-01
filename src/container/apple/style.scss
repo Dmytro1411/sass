@@ -1,0 +1,262 @@
+// Прописываем из какого файла подключаем, а в самих БЭМах прописываем, какие и где будут использоваться свойста, прописанные в функциях
+// @use '../../lib/service.scss';
+
+// Что бы каждый раз не писать полностью sevice.scss в коде прописываем для этого файла сокращенное название
+@use '../../lib/service.scss' as s;
+
+.header {
+  @extend .section;
+  background-color: s.color(backgroundLightDark);
+}
+
+.header__link {
+  @include s.click;
+  color: s.color(colorLight);
+  font-size: s.fontSize(6);
+}
+
+.header__content {
+  @extend .section__content;
+  display: flex;
+  padding: s.space(4) 0;
+  justify-content: space-between;
+
+  @media all and (width < 700px) {
+    flex-direction: column;
+    gap: 10px;
+
+    .header__block:last-of-type {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.header__block {
+  display: flex;
+  gap: s.space(8);
+
+  align-items: center;
+}
+
+.header__icon {
+  @include s.click;
+}
+
+.header__title {
+  font-size: s.fontSize(6);
+}
+
+.header:nth-of-type(2) {
+  @extend .section;
+  background-color: s.color(colorWhite);
+
+  .header__link {
+    @include s.click;
+    color: s.color(colorBlue);
+    font-size: s.fontSize(7);
+  }
+}
+
+.product__content {
+  display: grid;
+  gap: s.space(5);
+  text-align: center;
+  align-content: center;
+}
+
+.product__title {
+  font-size: s.fontSize(28);
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.product__action {
+  display: flex;
+  gap: s.space(5);
+  align-items: center;
+  justify-content: center;
+
+  @include s.click;
+}
+
+.product {
+  @extend .section;
+
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+
+.product-big {
+  max-height: 700px;
+  height: 100vh;
+
+  padding: s.space(20) s.space(0);
+
+  background-size: cover;
+
+  @media all and (width < s.screen('tablet')) {
+    background-size: 100%;
+
+    max-height: 500px;
+  }
+}
+
+.product__description {
+  font-size: s.fontSize(14);
+}
+
+.product__link {
+  @include s.linkAction;
+  font-size: s.fontSize(10);
+  font-weight: 400;
+}
+
+.product-small {
+  .product__title {
+    font-size: s.fontSize(20);
+  }
+
+  .product__description {
+    font-size: s.fontSize(10);
+  }
+
+  .product__link {
+    @include s.linkAction;
+    font-size: s.fontSize(8);
+    font-weight: 400;
+  }
+
+  max-height: 580px;
+  height: 100vh;
+
+  padding: s.space(12.5) s.space(0);
+
+  background-size: cover;
+
+  @media all and (width < s.screen('leptop')) {
+    max-height: 700px;
+    height: 100vh;
+    background-size: cover;
+    background-position-y: center;
+  }
+
+  @media all and (width < s.screen('tablet')) {
+    background-size: 100%;
+    max-height: 500px;
+  }
+}
+
+.product--dark {
+  .product__title,
+  .product__description,
+  .product__description {
+    color: s.color('background');
+  }
+
+  .link--dark {
+    color: #2997ff;
+  }
+  background-color: #000;
+}
+
+.product--light {
+  .product__title,
+  .product__description,
+  .product__description {
+    color: s.color('fontDark');
+  }
+
+  .link--light {
+    color: #0066cc;
+  }
+
+  background-color: #fff;
+}
+
+.product--top {
+  .product__content {
+    align-content: flex-start;
+  }
+}
+
+.product--bottom {
+  .product__content {
+    align-content: flex-end;
+
+    @media all and (width < 700px) {
+      align-content: flex-start;
+    }
+  }
+}
+
+$productImage: (
+  'iphone-pro' '/img/main/iphone_pro.png' #000,
+  'iphone' '/img/main/iphone.png' #fafafa,
+  'iwatch' '/img/main/iwatch.png' #000,
+  'trade_in' '/img/main/trade_in.png' #fbfbfd,
+  'conference' '/img/main/conference.png' #000,
+  'ipad' '/img/main/ipad.png' #fafafa,
+  'small_business' '/img/main/small_business.png' #000,
+  'gift' '/img/main/gift.png' #fafafa,
+  'card' '/img/main/card.png' #fafafa
+);
+
+@each $class, $url, $color in $productImage {
+  .product--#{$class} {
+    background-image: url(#{$url});
+    background-color: $color;
+  }
+}
+
+.footer {
+  @extend .section;
+
+  @media all and (width < 550px) {
+    gap: 10px;
+  }
+}
+
+.footer__content {
+  @extend .section__content;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: s.space(5);
+  padding: s.space(10);
+
+  @media all and (width < 700px) {
+    grid-template-columns: repeat(3, 1fr);
+    padding: s.space(10) s.space(5);
+    gap: s.space(10);
+  }
+
+  @media all and (width < 550px) {
+    grid-template-columns: repeat(2, 1fr);
+    padding: s.space(10) s.space(5) s.space(5) s.space(10);
+  }
+
+  @media all and (width < 360px) {
+    grid-template-columns: 1fr;
+    padding-left: s.space(10);
+  }
+}
+
+.footer__block {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(4);
+}
+
+.footer__text,
+.footer__link {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(3);
+
+  color: s.color(colorGrey);
+}
+
+.footer__title {
+  color: s.color(fontDark);
+  font-weight: 600;
+}

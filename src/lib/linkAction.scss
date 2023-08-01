@@ -1,0 +1,21 @@
+@use './var.scss';
+@use './space.scss' as s;
+@use './fontsize.scss' as f;
+
+@mixin linkAction {
+  //   color: var.color('colorBlue');
+  position: relative;
+  padding-right: calc(s.space(2.5) + 7px);
+
+  &::after {
+    display: block;
+    content: '';
+    width: f.fontSize(3.5);
+    height: f.fontSize(6);
+    background-image: url('/img/main/arrowAction.svg');
+    position: absolute;
+    right: 0;
+    top: calc(50% - 6px);
+    background-repeat: no-repeat;
+  }
+}
