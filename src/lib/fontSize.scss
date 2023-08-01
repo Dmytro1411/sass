@@ -1,0 +1,3 @@
+@function fontSize($num) {
+  @return $num * 2px;
+}
