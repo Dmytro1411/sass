@@ -1,29 +1,29 @@
-.section, .header, .header:nth-of-type(2), .product, .footer {
+.section, .header, .header:nth-of-type(2), .product {
   display: flex;
   justify-content: center;
 }
 
-.section__content, .header__content, .footer__content {
+.section__content, .header__content {
   max-width: 1200px;
   width: 100%;
 }
 @media all and (width < 1440px) {
-  .section__content, .header__content, .footer__content {
+  .section__content, .header__content {
     max-width: 1100px;
   }
 }
 @media all and (width < 1260px) {
-  .section__content, .header__content, .footer__content {
+  .section__content, .header__content {
     max-width: 900px;
   }
 }
 @media all and (width < 1000px) {
-  .section__content, .header__content, .footer__content {
+  .section__content, .header__content {
     max-width: 700px;
   }
 }
 @media all and (width < 620px) {
-  .section__content, .header__content, .footer__content {
+  .section__content, .header__content {
     max-width: 500px;
   }
 }
@@ -144,11 +144,10 @@
   max-height: 700px;
   height: 100vh;
   padding: 80px 0px;
-  background-size: cover;
+  background-size: 100%;
 }
 @media all and (width < 1000px) {
   .product-big {
-    background-size: 100%;
     max-height: 500px;
   }
 }
@@ -179,7 +178,7 @@
   max-height: 580px;
   height: 100vh;
   padding: 50px 0px;
-  background-size: cover;
+  background-size: 100%;
 }
 .product-small .product__title {
   font-size: 40px;
@@ -208,20 +207,14 @@
   .product-small {
     max-height: 700px;
     height: 100vh;
-    background-size: cover;
-    background-position-y: center;
   }
 }
 @media all and (width < 1000px) {
   .product-small {
-    background-size: 100%;
     max-height: 500px;
   }
 }
 
-.product--dark {
-  background-color: #000;
-}
 .product--dark .product__title,
 .product--dark .product__description,
 .product--dark .product__description {
@@ -231,9 +224,6 @@
   color: #2997ff;
 }
 
-.product--light {
-  background-color: #fff;
-}
 .product--light .product__title,
 .product--light .product__description,
 .product--light .product__description {
@@ -246,14 +236,17 @@
 .product--top .product__content {
   align-content: flex-start;
 }
+@media all and (width < 1000px) {
+  .product--top {
+    background-position: bottom;
+  }
+}
 
+.product--bottom {
+  background-position: top;
+}
 .product--bottom .product__content {
   align-content: flex-end;
-}
-@media all and (width < 700px) {
-  .product--bottom .product__content {
-    align-content: flex-start;
-  }
 }
 
 .product--iphone-pro {
@@ -301,35 +294,25 @@
   background-color: #fafafa;
 }
 
-@media all and (width < 550px) {
-  .footer {
-    gap: 10px;
-  }
-}
-
-.footer__content {
+.footer {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 20px;
   padding: 40px;
 }
-@media all and (width < 700px) {
-  .footer__content {
+@media all and (670px <= width <= 1000px) {
+  .footer {
     grid-template-columns: repeat(3, 1fr);
-    padding: 40px 20px;
-    gap: 40px;
   }
 }
-@media all and (width < 550px) {
-  .footer__content {
+@media all and (width < 670px) {
+  .footer {
     grid-template-columns: repeat(2, 1fr);
-    padding: 40px 20px 20px 40px;
   }
 }
-@media all and (width < 360px) {
-  .footer__content {
+@media all and (width < 400px) {
+  .footer {
     grid-template-columns: 1fr;
-    padding-left: 40px;
   }
 }
 
@@ -339,17 +322,39 @@
   gap: 16px;
 }
 
-.footer__text,
-.footer__link {
-  display: flex;
-  flex-direction: column;
+.footer__text {
   gap: 12px;
+  color: #424245;
+}
+
+.footer__link {
   color: #424245;
 }
 
 .footer__title {
   color: #1d1d1f;
   font-weight: 600;
+}
+
+@media all and (850px < width < 1000px) {
+  .section__double .product--top {
+    background-position: top center;
+  }
+}
+
+@media all and (width < 400px) {
+  .product__description {
+    font-size: 20px;
+  }
+  .product__title {
+    font-size: 30px;
+  }
+  .page {
+    flex-direction: column;
+    display: flex;
+    margin: 0 10px;
+    align-items: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
