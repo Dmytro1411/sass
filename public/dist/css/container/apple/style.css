@@ -300,12 +300,12 @@
   gap: 20px;
   padding: 40px;
 }
-@media all and (670px <= width <= 1000px) {
+@media all and (620px <= width <= 1000px) {
   .footer {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media all and (width < 670px) {
+@media all and (width < 620px) {
   .footer {
     grid-template-columns: repeat(2, 1fr);
   }
